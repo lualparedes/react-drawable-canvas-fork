@@ -12,14 +12,16 @@ class DrawableCanvas extends React.Component {
   componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
-    canvas.width = this.props.width;
-    canvas.height = this.props.height;
+    canvas.width = this.props.width || canvas.offsetWidth;
+    canvas.height = this.props.height || canvas.offsetHeight;
 
     const context = canvas.getContext('2d');
 
     this.setState({
       canvas,
-      context
+      context,
+      width: canvas.width,
+      height: canvas.height,
     });
   }
 
@@ -124,7 +126,8 @@ class DrawableCanvas extends React.Component {
   }
 
   render() {
-    const { width, height, className } = this.props;
+    const { className } = this.props;
+    const { width, height } = this.state;
     return (
       <canvas
         width = {width}
