@@ -12,8 +12,6 @@ class DrawableCanvas extends React.Component {
   componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
     canvas.width = this.props.width || canvas.offsetWidth;
     canvas.height = this.props.height || canvas.offsetHeight;
 
