@@ -9,7 +9,7 @@ class DrawableCanvas extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
     canvas.style.width = '100%';
@@ -19,7 +19,7 @@ class DrawableCanvas extends React.Component {
 
     const context = canvas.getContext('2d');
 
-    this.setState({
+    await this.setState({
       canvas,
       context
     });
