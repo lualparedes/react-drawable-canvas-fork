@@ -9,8 +9,8 @@ class DrawableCanvas extends React.Component {
 
     canvas.style.width = this.props.width;
     canvas.style.height = this.props.height;
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = this.props.width;
+    canvas.height = this.props.height;
 
     const context = canvas.getContext('2d');
 
