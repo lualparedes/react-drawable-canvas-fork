@@ -9,19 +9,19 @@ class DrawableCanvas extends React.Component {
     super(props);
   }
 
-  async componentDidMount(){
+  componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = this.props.width || canvas.offsetWidth;
+    canvas.height = this.props.height || canvas.offsetHeight;
 
     const context = canvas.getContext('2d');
 
-    await this.setState({
+    this.setState({
       canvas,
-      context
+      context,
+      width: canvas.width,
+      height: canvas.height,
     });
   }
 
@@ -129,7 +129,10 @@ class DrawableCanvas extends React.Component {
     const { className } = this.props;
     const { width, height } = this.state;
     return (
-      <canvas style = {this.canvasStyle()}
+      <canvas
+        width = {width}
+        height = {height}
+        className = {className}
         onMouseDown = {this.handleOnMouseDown.bind(this)}
         onTouchStart = {this.handleOnTouchStart.bind(this)}
         onMouseMove = {this.handleOnMouseMove.bind(this)}
