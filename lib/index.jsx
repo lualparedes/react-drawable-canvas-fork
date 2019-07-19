@@ -5,12 +5,15 @@ import assign from 'object-assign';
 
 class DrawableCanvas extends React.Component {
 
-  componentDidMount(props){
+  constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
-    canvas.width = props.width;
-    canvas.height = props.height;
+    canvas.width = this.props.width;
+    canvas.height = this.props.height;
 
     const context = canvas.getContext('2d');
 
