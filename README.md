@@ -1,4 +1,4 @@
-# react-drawable-canvas
+# react-drawable-canvas-fork
 Drawable canvas component for React.js.
 
 **Install**
