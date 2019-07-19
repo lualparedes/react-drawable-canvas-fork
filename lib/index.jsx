@@ -4,6 +4,10 @@ import assign from 'object-assign'
 
 class DrawableCanvas extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
