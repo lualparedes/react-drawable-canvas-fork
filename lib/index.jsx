@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import assign from 'object-assign'
 
 class DrawableCanvas extends React.Component {
@@ -8,8 +7,8 @@ class DrawableCanvas extends React.Component {
   componentDidMount(){
     const canvas = ReactDOM.findDOMNode(this);
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    canvas.style.width = this.props.width;
+    canvas.style.height = this.props.height;
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
@@ -123,7 +122,10 @@ class DrawableCanvas extends React.Component {
 
   render() {
     return (
-      <canvas style = {this.canvasStyle()}
+      <canvas
+        style = {this.canvasStyle()}
+        width = {this.props.width}
+        width = {this.props.height}
         onMouseDown = {this.handleOnMouseDown.bind(this)}
         onTouchStart = {this.handleOnTouchStart.bind(this)}
         onMouseMove = {this.handleOnMouseMove.bind(this)}
@@ -136,15 +138,5 @@ class DrawableCanvas extends React.Component {
   }
 
 }
-
-DrawableCanvas.propTypes = {
-  brushColor: PropTypes.string,
-  lineWidth: PropTypes.number,
-  cursor: PropTypes.string,
-  canvasStyle: PropTypes.shape({
-    backgroundColor: PropTypes.string
-  }),
-  clear: PropTypes.bool
-};
 
 export default DrawableCanvas;
